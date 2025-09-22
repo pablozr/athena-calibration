@@ -1,0 +1,25 @@
+<div class="container">
+  <p-button 
+    (click)="visible = true" 
+    icon="pi pi-bars" 
+    >
+  </p-button>
+</div>
+
+<p-drawer 
+  header="Menu Principal" 
+  [(visible)]="visible" 
+  [style]="{ width: '280px' }">
+  
+  <ul class="menu-list">
+    <li (click)="onMenuItemClick()">
+      <i class="pi pi-home"></i>
+      <span>Início</span>
+    </li>
+    <li (click)="onMenuItemClick()">
+      <i class="pi pi-cog"></i>
+      <span>Configurações</span>
+    </li>
+  </ul>
+  
+</p-drawer>

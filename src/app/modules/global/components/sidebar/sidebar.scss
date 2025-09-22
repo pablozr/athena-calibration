@@ -1,0 +1,58 @@
+::ng-deep .p-drawer-content {
+  background-color: #f4f7f9;
+  padding: 0;
+}
+
+.container {
+  position: fixed;
+  z-index: 1010;
+}
+
+::ng-deep .p-drawer-title{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    flex-grow: 1;
+    text-align: start;
+}
+
+::ng-deep .p-drawer-header{
+    background-color: #e6e3e3;
+}
+
+.menu-list {
+  list-style-type: none;
+  padding: 1rem 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  li {
+    display: flex;
+    align-items: center;
+    padding: 0.9rem 1.5rem;
+    margin: 0.25rem 0.75rem;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    color: #475569;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      background-color: #e2e8f0;
+      color: #0f172a;
+      transform: translateX(4px);
+    }
+
+    .pi {
+      font-size: 1.2rem;
+      margin-right: 1rem;
+      min-width: 24px; 
+      text-align: center;
+    }
+
+    span {
+      font-size: 1rem;
+      font-weight: 500;
+    }
+  }
+}
