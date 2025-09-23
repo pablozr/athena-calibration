@@ -1,0 +1,166 @@
+.dashboard-container {
+  padding: 2rem;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+::ng-deep .dashboard-card {
+  .p-card-body {
+    padding: 0;
+  }
+
+  .p-card-content {
+    padding: 0;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 2rem;
+  }
+}
+
+.filter-sidebar {
+  padding: 1.5rem;
+  border-right: 1px solid #dee2e6;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+
+  h3 {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    margin: 0 0 1rem 0;
+    font-size: 1.5rem;
+    color: #343a40;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  margin-right: 1rem;
+
+  ::ng-deep .p-inputtext {
+    width: 100%;
+   }
+
+  h4 {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #495057;
+  }
+}
+
+.price-values {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+.pagination {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+:host ::ng-deep {
+
+  .p-datatable .p-datatable-thead > tr > th {
+    background-color: #f2f2f2; 
+    color: #333;
+    font-weight: 600;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    border-bottom: 2px solid #dee2e6;
+  }
+
+  .p-datatable .p-datatable-caption {
+    padding: 0.75rem 0.25rem;
+    border-top: 1px solid #dee2e6; 
+  }
+
+  .table-caption-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .table-caption-container h3 {
+    margin: 0; 
+    font-size: 1.25rem;
+    font-weight: 600;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+
+  .table-caption-container .p-button {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    height: 2.5rem;
+  }
+
+
+  .p-datatable .p-datatable-tbody > tr > td {
+        border-bottom: 1px solid #dee2e6;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        color: #495057;
+        text-align: left;
+    }
+  
+  .p-datatable .p-datatable-tbody td button {
+    margin-right: 0.5rem;
+  }
+  
+  .p-datatable .p-datatable-tbody td button:last-child {
+    margin-right: 0;
+  }
+  
+  .p-datatable-tbody > tr:hover {
+    background: #f7f7f7;
+  }
+
+  .p-datatable-tbody > tr:last-child > td {
+          border-bottom: none;
+    }
+
+    .p-dialog .p-field {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .p-dialog .p-field label {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 600;
+    color: #495057;
+  }
+
+  .p-dialog .p-fluid .p-field:last-of-type {
+    margin-bottom: 0;
+  }
+  
+  .p-dialog .p-dialog-header {
+    font-weight: 600;
+    font-size: 1.25rem;
+    padding: 1.25rem;
+    background-color: #f7f9fc;
+    border-bottom: 1px solid #dee2e6;
+  }
+  
+  .p-dialog .p-dialog-footer {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem; 
+    padding: 1.25rem;
+    border-top: 1px solid #dee2e6;
+  }
+}

@@ -1,0 +1,116 @@
+<app-header></app-header>
+
+@if (isLoading){
+  <app-loading></app-loading>
+} @else {
+  <div class="dashboard-container">
+    <p-dialog header="Adicionar Produto" [(visible)]="displayAddDialog" [modal]="true" [closable]="true" [style]="{width: '400px'}">
+        <div class="p-fluid">
+            <div class="p-field">
+                <label for="name">Nome do Produto</label>
+                <input id="name" type="text" pInputText  placeholder="Nome do Produto" [(ngModel)]="newProduct.name" />
+            </div>
+            <div class="p-field">
+                <label for="category">Categoria</label>
+                <p-select [options]="categories" placeholder="Selecione uma categoria" [(ngModel)]="newProduct.category"></p-select>
+            </div>
+            <div class="p-field">
+                <label for="price">Preço</label>
+                <p-inputNumber id="price" [(ngModel)]="newProduct.price" type="number" mode="currency" currency="BRL" placeholder="Valor"/>
+            </div>
+            <div class="p-field">
+                <label for="description">Descrição</label>
+                <input id="description" type="text" pInputText  placeholder="Descrição do Produto" [(ngModel)]="newProduct.description" />
+            </div>
+        </div>
+
+        <ng-template pTemplate="footer">
+            <button pButton type="button" label="Cancelar" icon="pi pi-times" (click)="displayAddDialog=false" class="p-button-text"></button>
+            <button pButton type="button" label="Salvar" icon="pi pi-check" (click)="addProduct()"></button>
+        </ng-template>
+
+    </p-dialog>
+
+    <p-dialog header="Editar Produto" [(visible)]="displayEditDialog" [modal]="true" [closable]="true" [style]="{width: '400px'}">
+        <div class="p-fluid">
+            <div class="p-field">
+                <label for="name">Nome do Produto</label>
+                <input id="name" type="text" pInputText  placeholder="Nome do Produto" [(ngModel)]="updatedProduct.name" />
+            </div>
+            <div class="p-field">
+                <label for="category">Categoria</label>
+                <p-select [options]="categories" placeholder="Selecione uma categoria" [(ngModel)]="updatedProduct.category"></p-select>
+            </div>
+            <div class="p-field">
+                <label for="price">Preço</label>
+                <p-inputNumber id="price" [(ngModel)]="updatedProduct.price" type="number" mode="currency" currency="BRL" placeholder="Valor"/>
+            </div>
+            <div class="p-field">
+                <label for="description">Descrição</label>
+                <input id="description" type="text" pInputText  placeholder="Descrição do Produto" [(ngModel)]="updatedProduct.description" />
+            </div>
+        </div>
+        <ng-template pTemplate="footer">
+            <button pButton type="button" label="Cancelar" icon="pi pi-times" (click)="displayEditDialog=false" class="p-button-text"></button>
+            <button pButton type="button" label="Salvar" icon="pi pi-check" (click)="updateProduct()"></button>
+        </ng-template>
+    </p-dialog>
+
+    <p-card  class="dashboard-card">
+
+        <aside class="filter-sidebar">
+            <h3><i class="pi pi-filter"></i> Filtros</h3>
+            <div class="filter-group">
+                <h4>Nome do Produto</h4>
+                <p-iconfield iconPosition="left">
+                    <p-inputicon class="pi pi-search" />
+                    <input type="text" pInputText placeholder="Procure" [(ngModel)]="searchInput" (ngModelChange)="onSearchInputChange()"/>
+                </p-iconfield>
+            </div>
+
+            <div class="filter-group">
+                <h4>Categoria</h4>
+                <p-select [options]="categories" [(ngModel)]="selectedCategory" placeholder="Selecione uma categoria" (onChange)="filterByCategory()"></p-select>
+            </div>
+            <div class="filter-group">
+                <h4>Faixa de Preço</h4>
+                <p-slider [(ngModel)]="priceRange" [min]="0" [max]="1000" [range]="true" (onChange)="onSearchPriceRangeChange()"></p-slider>
+                <div class="price-values">
+                    <span>R$ {{ priceRange[0] }}</span>
+                    <span>R$ {{ priceRange[1] }}</span>
+                </div>
+            </div>
+        </aside>
+
+        <p-table [value]="products" [paginator]="true" [rows]="10" [responsiveLayout]="'scroll'">
+
+            <ng-template pTemplate="caption">
+                <div class="table-caption-container">
+                    <h3 class="table-title">Dashboard de produtos</h3>
+                    <button pButton type="button" label="Adicionar Produto" (click)="showAddProductDialog()" icon="pi pi-plus"></button>
+                </div>
+            </ng-template>
+
+            <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="name">Nome do Produto<p-sortIcon field="name"></p-sortIcon></th>
+                <th pSortableColumn="category">Categoria<p-sortIcon field="category"></p-sortIcon></th>
+                <th pSortableColumn="price">Preço<p-sortIcon field="price"></p-sortIcon></th>
+                <th>Ações</th>
+            </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-product>
+            <tr>
+                <td>{{ product.name }}</td>
+                <td>{{ product.category }}</td>
+                <td>{{ product.price | currency: 'BRL' }}</td>
+                <td>
+                <button pButton type="button" label="Editar" icon="pi pi-pencil" (click)="showEditProductDialog(product)" severity="success" ></button>
+                <button pButton type="button" label="Excluir" icon="pi pi-trash" (click)="deleteProduct(product.id)" severity="danger"></button>
+                </td>
+            </tr>
+            </ng-template>
+        </p-table>
+    </p-card>
+  </div>
+}
