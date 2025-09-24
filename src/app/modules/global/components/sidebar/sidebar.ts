@@ -4,12 +4,13 @@ import { ButtonModule } from 'primeng/button';
 import { Router } from '@angular/router';
 import { RippleModule } from 'primeng/ripple';
 import { StyleClassModule } from 'primeng/styleclass';
+import { ButtonTheme } from '../button-theme/button-theme';
 @Component({
     selector: 'app-sidebar',
     templateUrl: './sidebar.html',
     styleUrls: ['./sidebar.scss'],
     standalone: true,
-    imports: [DrawerModule, ButtonModule, RippleModule, StyleClassModule]
+    imports: [DrawerModule, ButtonModule, RippleModule, StyleClassModule, ButtonTheme]
 })
 export class Sidebar {
   private router = inject(Router)

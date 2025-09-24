@@ -1,0 +1,12 @@
+<div class="card flex justify-content-center align-items-center p-3">
+  <p-toggleButton 
+    [(ngModel)]="isDarkMode"
+    (onChange)="toggleLightDark()"
+    onLabel="Dark"
+    offLabel="Light"
+    onIcon="pi pi-moon"
+    offIcon="pi pi-sun"
+    styleClass="w-6rem"
+    >
+  </p-toggleButton>
+</div>

@@ -1,7 +1,18 @@
 ::ng-deep .p-drawer-content {
-  background-color: #f4f7f9;
   padding: 0;
+
+  .button-theme {
+    position: absolute;
+    bottom: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+  }
+
+  
 }
+
 
 .container {
   position: fixed;
@@ -17,7 +28,7 @@
 }
 
 ::ng-deep .p-drawer-header{
-    background-color: #e6e3e3;
+  border-bottom: solid 1px #d1d5db;
 }
 
 .menu-list {
@@ -34,12 +45,10 @@
     cursor: pointer;
     border-radius: 8px;
     transition: background-color 0.2s ease, color 0.2s ease;
-    color: #475569;
     transition: all 0.2s ease-in-out;
 
     &:hover {
-      background-color: #e2e8f0;
-      color: #0f172a;
+      color: #b2b2b4;
       transform: translateX(4px);
     }
 

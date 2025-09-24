@@ -12,8 +12,6 @@ import { IProduct } from '../../interfaces/IProduct';
 import { debounceTime, distinctUntilChanged, Subject } from 'rxjs';
 import { ProductsService } from '../../services/products.service';
 import { SliderModule } from 'primeng/slider';
-import { InputGroupModule } from 'primeng/inputgroup';
-import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { SelectModule } from 'primeng/select';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
@@ -47,7 +45,7 @@ export class Dashboard implements OnInit {
       debounceTime(500),
       distinctUntilChanged(),
     ).subscribe(() => {
-      this.getProductsByName();
+      this.filterByName();
     })
     this.priceRangeSearch$.pipe(
       debounceTime(500),
@@ -148,7 +146,7 @@ export class Dashboard implements OnInit {
     }
   }
 
-  async getProductsByName() {
+  async filterByName() {
     this.isLoading = true;
   
     const response = await this.productsService.getProductsByName(this.searchInput);
