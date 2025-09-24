@@ -1,18 +1,19 @@
 ::ng-deep .p-drawer-content {
   padding: 0;
-
-  .button-theme {
-    position: absolute;
-    bottom: 1rem;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding: 1rem;
-  }
-
-  
 }
 
+.button-theme {
+  position: absolute;
+  bottom: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  
+}
 
 .container {
   position: fixed;

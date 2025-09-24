@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="theme-switcher">
+        <app-button-theme></app-button-theme>
+    </div>
+
+    @if (isLoading) {
+        <app-loading></app-loading>
+    } @else {
+        <div class="register-background">
+            <div class="register-card">
+                <h2>Registrar</h2>
+                <form (ngSubmit)="onSubmit()" [formGroup]="registerForm">
+                    <div class="toggle-password">
+                        @if (isPasswordVisible) {
+                            <span class="pi pi-eye" (click)="togglePasswordVisibility()"></span>
+                        } @else {
+                            <span class="pi pi-eye-slash" (click)="togglePasswordVisibility()"></span>
+                        }
+                    </div>
+                    <div class="p-field">   
+                        <label for="name">Nome</label>
+                        <input id="name" type="text" pInputText placeholder="Nome" formControlName="username" required minlength="3" />
+                    </div>
+                    <div class="p-field">   
+                        <label for="email">Email</label>
+                        <input id="email" type="text" pInputText placeholder="Email" formControlName="email" required email />
+                    </div>
+                    <div class="p-field">
+                        <label for="password">Senha</label>
+                        <input id="password" type="password" pInputText placeholder="Senha" formControlName="password" required minlength="6" />
+                    </div>
+                    <button pButton type="submit" label="Registrar" [disabled]="!registerForm.valid"></button>
+                    <div class="login-link">
+                        <span>Já tem uma conta?</span>
+                        <a (click)="navigateTo('signin')"> Entrar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    }
+</div>

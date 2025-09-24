@@ -1,0 +1,92 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.theme-switcher {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.signin-background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.signin-card {
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  border: solid 1px #5e5d5d;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.p-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: left;
+}
+
+label {
+  font-weight: bold;
+}
+
+input[pInputText] {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+input[pInputText]:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 122, 217, 0.2);
+}
+
+button[pButton] {
+  padding: 0.75rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button[pButton][disabled] {
+  cursor: not-allowed;
+}
+
+.register-link {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.register-link a {
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}

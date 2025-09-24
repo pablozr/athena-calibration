@@ -13,4 +13,8 @@ export class Localstorage {
     const information = localStorage.getItem(key);
     return information ? JSON.parse(information) : null;
   }
+
+  removeLocalStorage(key: string): void {
+    localStorage.removeItem(key);
+  }
 }
