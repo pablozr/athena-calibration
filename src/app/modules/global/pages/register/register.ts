@@ -27,6 +27,7 @@ export class Register {
   constructor(){
     this.registerForm = new FormGroup({
       username: new FormControl('', Validators.required),
+      nomeCompleto: new FormControl('', Validators.required),
       email: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required),
     });

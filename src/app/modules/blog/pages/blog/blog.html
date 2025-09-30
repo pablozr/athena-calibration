@@ -1,0 +1,156 @@
+<app-header></app-header>
+
+<p-dialog header="Adicionar Postagem" [(visible)]="showAddPostDialog" [modal]="true" [closable]="true" [style]="{width: '600px'}">
+    <div class="p-fluid">
+        <div class="p-field">
+            <label for="title">Título da Postagem</label>
+            <input id="title" type="text" pInputText  placeholder="Título da Postagem" [(ngModel)]="newPost.title" />
+        </div>
+        <div class="p-field">
+            <label for="content">Conteúdo</label>
+            <textarea id="content" pInputTextarea rows="5" placeholder="Conteúdo da Postagem" [(ngModel)]="newPost.content"></textarea>
+        </div>
+    </div>
+
+    <ng-template pTemplate="footer">
+        <button pButton type="button" label="Cancelar" icon="pi pi-times" (click)="showAddPostDialog=false" class="p-button-text"></button>
+        <button pButton type="button" label="Salvar" icon="pi pi-check" (click)="addPost()" (keyup.enter)="addPost()"></button>
+    </ng-template>
+
+</p-dialog>
+
+<p-dialog header="Adicionar Comentário" [(visible)]="showAddCommentDialog" [modal]="true" [closable]="true" [style]="{width: '600px'}">
+    <div class="p-fluid">
+        <div class="p-field">
+            <label for="content">Conteúdo do Comentário</label>
+            <textarea id="content" pInputTextarea rows="5" placeholder="Conteúdo do Comentário" [(ngModel)]="newComment.content"></textarea>
+        </div>
+    </div>
+
+    <ng-template pTemplate="footer">
+        <button pButton type="button" label="Cancelar" icon="pi pi-times" (click)="showAddCommentDialog=false" class="p-button-text"></button>
+        <button pButton type="button" label="Salvar" icon="pi pi-check" (click)="addComment()" (keyup.enter)="addComment()"></button>
+    </ng-template>
+</p-dialog>
+
+<p-dialog header="Editar Postagem" [(visible)]="showEditPostDialog" [modal]="true" [closable]="true" [style]="{width: '600px'}">
+    <div class="p-fluid">
+        <div class="p-field">
+            <label for="title">Título da Postagem</label>
+            <input id="title" type="text" pInputText  placeholder="Título da Postagem" [(ngModel)]="updatedPost.title" />
+        </div>
+        <div class="p-field">
+            <label for="content">Conteúdo da Postagem</label>
+            <textarea id="content" pInputTextarea rows="5" placeholder="Conteúdo da Postagem" [(ngModel)]="updatedPost.content"></textarea>
+        </div>
+    </div>
+
+    <ng-template pTemplate="footer">
+        <button pButton type="button" label="Cancelar" icon="pi pi-times" (click)="showEditPostDialog=false" class="p-button-text"></button>
+        <button pButton type="button" label="Salvar" icon="pi pi-check" (click)="updatePost()" (keyup.enter)="updatePost()"></button>
+    </ng-template>
+</p-dialog>
+
+<p-dialog header="Editar Comentário" [(visible)]="showEditCommentDialog" [modal]="true" [closable]="true" [style]="{width: '600px'}">
+    <div class="p-fluid">
+        <div class="p-field">
+            <label for="content">Conteúdo do Comentário</label>
+            <textarea id="content" pInputTextarea rows="5" placeholder="Conteúdo do Comentário" [(ngModel)]="updatedComment.content"></textarea>
+        </div>
+    </div>
+
+    <ng-template pTemplate="footer">
+        <button pButton type="button" label="Cancelar" icon="pi pi-times" (click)="showEditCommentDialog=false" class="p-button-text"></button>
+        <button pButton type="button" label="Salvar" icon="pi pi-check" (click)="updateComment()" (keyup.enter)="updateComment()"></button>
+    </ng-template>
+</p-dialog>
+
+<div class="blog-container">
+    <h1 class="blog-title">Blog bananilson</h1>
+    <p-button icon="pi pi-plus" class="add-post-button" severity="success" (click)="onOpenAddPostDialog()"></p-button>
+
+    @if (isLoading){
+        <app-loading></app-loading>
+    } @else{
+        <div class="blog-posts">
+        @for (post of posts; track post.id){
+            <div class="blog-post">
+                <p-card class="post-card">
+                    <ng-template pTemplate="subheader">
+                        <div class="post-author">
+                            <span class="author-name"> Feito por: {{ post.post_author_name }} </span>
+                            <i class="pi pi-user"> </i>
+                            <span class="mx-2">|</span>
+                            <i class="pi pi-calendar mr-1"></i>
+                            <span class="post-date">{{ post.created_at | date }}</span>
+                        </div>
+                    </ng-template>
+
+                    <ng-template pTemplate="title">
+                        {{ post.title }}
+                        @if (post.author_id === userDetails.user.id) {
+                            <div class="post-actions">
+                                <button pButton type="button" icon="pi pi-pencil" severity="success" label="Editar" (click)="onOpenEditPostDialog(post.id)"></button>
+                                <button pButton type="button" icon="pi pi-trash" severity="danger" label="Deletar" (click)="deletePost(post.id)"></button>
+                            </div>
+                        }
+                    </ng-template>
+
+                    <p class="post-content">
+                        {{ post.content }}
+                    </p>
+
+                    @if(post.first_comment_content) {
+                        @if(!post.commentsShown) {
+                            <div class="post-comments">
+                                <h3>Comentários</h3>
+                                <div class="comment">
+                                    <div class="comment-content-actions">
+                                        <p class="comment-content">{{ post.first_comment_content }}</p>
+                                        <div class="comment-actions">
+                                            @if (post.first_comment_author_id === userDetails.user.id) {
+                                                <button pButton type="button" icon="pi pi-pencil" severity="success" label="Editar" (click)="onOpenEditCommentDialog(post.first_comment_id, post.id)" ></button>
+                                                <button pButton type="button" icon="pi pi-trash" severity="danger" label="Deletar" (click)="deleteComment(post.first_comment_id, post.id)" ></button>
+                                            }
+                                        </div>
+                                    </div>
+                                    <span class="comment-author">Por: {{ post.first_comment_author_name }}</span>
+                                    <span class="comment-date">{{ post.first_comment_created_at | date }}</span>
+                                </div>
+                            </div>
+                        } 
+                            <div class="more-comments">
+                                @if(post.commentsShown) {
+                                    @for (comment of post.comments; track comment.id) {
+                                        <div class="comment">
+                                            <div class="comment-content-actions">
+                                                <p class="comment-content">{{ comment.content }}</p>
+                                                <div class="comment-actions">
+                                                    @if (comment.author_id === userDetails.user.id) {
+                                                    <button pButton type="button" icon="pi pi-pencil" severity="success" label="Editar" (click)="onOpenEditCommentDialog(comment.id, post.id)" ></button>
+                                                    <button pButton type="button" icon="pi pi-trash" severity="danger" label="Deletar" (click)="deleteComment(comment.id, post.id)" ></button>
+                                                }
+                                                </div>
+                                            </div>
+                                            <span class="comment-author">Por: {{ comment.author_name }}</span>
+                                            <span class="comment-date">{{ comment.created_at | date }}</span>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                    }
+
+                    <ng-template pTemplate="footer">
+                        @if(post.commentsShown) {
+                            <button pButton type="button" label="Esconder comentarios" icon="pi pi-comments" class="p-button-text" (click)="onShowAllComments(post.id)"></button>
+                        } @else {
+                            <button pButton type="button" label="Ver mais comentarios" icon="pi pi-comments" class="p-button-text" (click)="onShowAllComments(post.id)"></button>
+                        }
+                        <button pButton type="button" label="Comentar" icon="pi pi-comment" class="p-button-text" (click)="onOpenAddCommentDialog(post.id)"></button>
+                    </ng-template>
+                </p-card>
+            </div>
+        }
+        </div>
+    }
+</div>

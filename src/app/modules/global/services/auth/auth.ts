@@ -11,7 +11,7 @@ export class Auth {
   private router = inject(Router);
 
   isAuthenticated(): boolean {
-    const token = this.localStorage.getLocalStorage('token');
+    const token = this.localStorage.getLocalStorage('USER-INFO')?.acessToken;
     return !!token;
   }
 
@@ -23,7 +23,7 @@ export class Auth {
       return false
     }
 
-    if (next.url[0]?.path == 'signin' && !isAuthenticated){
+    if ((next.url[0]?.path == 'signin' || next.url[0]?.path == 'register') && !isAuthenticated){
       return true
     }
 

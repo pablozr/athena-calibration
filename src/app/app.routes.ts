@@ -26,5 +26,10 @@ export const routes: Routes = [
     path: 'register',
     loadComponent: () => import('./modules/global/pages/register/register').then((m) => m.Register),
     canActivate:[Auth]
+  },
+  {
+    path: 'blog',
+    loadComponent: () => import('./modules/blog/pages/blog/blog').then((m) => m.Blog),
+    canActivate:[Auth]
   }
 ];

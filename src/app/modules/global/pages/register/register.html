@@ -22,12 +22,16 @@
                         <input id="name" type="text" pInputText placeholder="Nome" formControlName="username" required minlength="3" />
                     </div>
                     <div class="p-field">   
+                        <label for="fullName">Nome Completo</label>
+                        <input id="fullName" type="text" pInputText placeholder="Nome Completo" formControlName="nomeCompleto" required minlength="3" />
+                    </div>
+                    <div class="p-field">   
                         <label for="email">Email</label>
                         <input id="email" type="text" pInputText placeholder="Email" formControlName="email" required email />
                     </div>
                     <div class="p-field">
                         <label for="password">Senha</label>
-                        <input id="password" type="password" pInputText placeholder="Senha" formControlName="password" required minlength="6" />
+                        <input id="password" [type]="isPasswordVisible ? 'text' : 'password'" pInputText placeholder="Senha" formControlName="password" required minlength="6" />
                     </div>
                     <button pButton type="submit" label="Registrar" [disabled]="!registerForm.valid"></button>
                     <div class="login-link">
