@@ -1,21 +1,19 @@
 ::ng-deep .p-drawer-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   padding: 0;
 }
 
 .button-theme {
-  position: absolute;
-  bottom: 1rem;
-  width: 100%;
   display: flex;
-  justify-content: space-between;
-  padding-left: 20px;
-  padding-right: 20px !important;
-  margin-bottom: 10px;
+  margin-top: auto;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
-.container {
-  position: fixed;
-  z-index: 1010;
+.logout-button {
+  margin-left: auto;
 }
 
 ::ng-deep .p-drawer-title{

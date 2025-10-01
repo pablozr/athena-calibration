@@ -104,7 +104,7 @@ export class Blog implements OnInit {
 
     if(response && response.data){
       
-      // aqui quando adiciono um post novo o author name fica vazio ate eu dar f5, pq o banco de dados so me retornar o id do author que deu insert no bd
+      // aqui quando adiciono um post novo o author name fica vazio ate eu dar f5, pq o banco de dados so me retorna o id do author que deu insert no bd
       // portanto n tem como eu no returning do insert ja retornar o nome, eu teria q fazer outra query pra buscar o nome usando o id retornado oq eh ineficiente
 
       this.posts = [response.data, ...this.posts];

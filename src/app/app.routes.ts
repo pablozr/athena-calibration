@@ -31,5 +31,10 @@ export const routes: Routes = [
     path: 'blog',
     loadComponent: () => import('./modules/blog/pages/blog/blog').then((m) => m.Blog),
     canActivate:[Auth]
+  },
+  {
+    path: 'todos',
+    loadComponent: () => import('./modules/todo/pages/todo/todo').then((m) => m.Todo),
+    canActivate:[Auth]
   }
 ];

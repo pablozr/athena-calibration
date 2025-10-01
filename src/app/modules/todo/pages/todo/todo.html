@@ -1,0 +1,53 @@
+<app-header></app-header>
+
+<p-dialog header="Adicionar Tarefa" [(visible)]="displayAddDialog" [modal]="true" [closable]="true" [style]="{width: '400px'}">
+    <div class="p-fluid">
+        <div class="p-field">
+            <label for="description">Descrição da Tarefa</label>
+            <input id="description" type="text" pInputText  placeholder="Descrição da Tarefa" [(ngModel)]="newTodo.description" />
+        </div>
+    </div>
+
+    <ng-template pTemplate="footer">
+        <button pButton type="button" label="Cancelar" icon="pi pi-times" (click)="displayAddDialog=false" class="p-button-text"></button>
+        <button pButton type="button" label="Salvar" icon="pi pi-check" (click)="addTodo()"></button>
+    </ng-template>
+</p-dialog>
+
+<p-dialog header="Editar Tarefa" [(visible)]="displayEditDialog" [modal]="true" [closable]="true" [style]="{width: '400px'}">
+    <div class="p-fluid">
+        <div class="p-field">
+            <label for="description">Descrição da Tarefa</label>
+            <input id="description" type="text" pInputText  placeholder="Descrição da Tarefa" [(ngModel)]="updatedTodo.description" />
+        </div>
+    </div>
+
+    <ng-template pTemplate="footer">
+        <button pButton type="button" label="Cancelar" icon="pi pi-times" (click)="displayEditDialog=false" class="p-button-text"></button>
+        <button pButton type="button" label="Salvar" icon="pi pi-check" (click)="updateTodo()"></button>
+    </ng-template>
+</p-dialog>
+
+<div class="todo-container">
+  <h1 class="title">Todo List</h1>
+  @if(isLoading) {
+      <app-loading></app-loading>
+  } @else {
+    <p-card class="todo-card">
+        <ng-template pTemplate="header">
+            <div class="header-content">
+                <button pButton type="button" label="Adicionar Tarefa" icon="pi pi-plus" (click)="onOpenAddDialog()" severity="success"></button>
+            </div>
+        </ng-template>
+        <ul class="todo-list">
+            @for(todo of todos; track todo._id){
+                <li class="todo-item">
+                    <p-checkbox [ngModel]="todo.completed" (onChange)="toggleTodo(todo._id)" [binary]="true"></p-checkbox>
+                    <span [ngClass]="{'completed': todo.completed}">{{ todo.description }}</span>
+                    <button pButton type="button" icon="pi pi-pencil" severity="success" label="Editar" (click)="onOpenEditDialog(todo._id)" ></button>
+                    <button pButton type="button" icon="pi pi-trash" severity="danger" label="Excluir" (click)="deleteTodo(todo._id)" ></button>
+                </li>
+            }
+        </ul>
+    </p-card>
+}

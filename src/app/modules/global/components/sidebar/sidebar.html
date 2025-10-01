@@ -45,14 +45,20 @@
               <span class="font-medium">Blog</span>
             </a>
           </li>
-    </ul>
+          <li>
+            <a (click)="navigateTo('/todos')" pRipple class="flex items-center cursor-pointer p-4 rounded-border text-surface-700 dark:text-surface-100 hover:bg-surface-100 dark:hover:bg-surface-700 duration-150 transition-colors p-ripple">
+              <i class="pi pi-check-square mr-2"></i>
+              <span class="font-medium">Todo List</span>
+            </a>
+          </li>
+        </ul>
       </li>
     </ul>
   </div>
 
   <div class="button-theme">
     <app-button-theme></app-button-theme>
-    <button pButton type="button" label="Sair" icon="pi pi-sign-out" severity="danger" (click)="signout()"></button>
+    <button pButton type="button" label="Sair" icon="pi pi-sign-out" severity="danger" (click)="signout()" class="logout-button"></button>
   </div>
   
 </p-drawer>

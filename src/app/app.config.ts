@@ -6,6 +6,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { providePrimeNG } from 'primeng/config';
 import { provideHttpClient } from '@angular/common/http';
 import { MessageService } from 'primeng/api';
+import { Noir } from '../styles';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -16,7 +17,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     providePrimeNG({
         theme: {
-          preset: Aura,
+          preset: Noir,
           options: {
             darkModeSelector: '.my-app-dark'
           }
