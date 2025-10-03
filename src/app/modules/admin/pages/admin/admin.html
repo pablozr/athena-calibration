@@ -7,9 +7,9 @@
     <p-table [value]="users" [paginator]="true" [rows]="10" [responsiveLayout]="'scroll'">
         <ng-template pTemplate="header">
             <tr>
-                <th pSortableColumn="displayName">Nome</th>
-                <th pSortableColumn="email">Email</th>
-                <th pSortableColumn="roles">Função</th>
+                <th pSortableColumn="displayName">Nome <p-sortIcon field="displayName"></p-sortIcon></th>
+                <th pSortableColumn="email">Email <p-sortIcon field="email"></p-sortIcon></th>
+                <th pSortableColumn="roles" >Função <p-sortIcon field="roles"></p-sortIcon></th>
                 <th>Ações</th>
             </tr>
         </ng-template>

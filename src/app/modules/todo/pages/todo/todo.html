@@ -28,26 +28,27 @@
     </ng-template>
 </p-dialog>
 
-<div class="todo-container">
-  <h1 class="title">Todo List</h1>
   @if(isLoading) {
       <app-loading></app-loading>
   } @else {
-    <p-card class="todo-card">
-        <ng-template pTemplate="header">
-            <div class="header-content">
-                <button pButton type="button" label="Adicionar Tarefa" icon="pi pi-plus" (click)="onOpenAddDialog()" severity="success"></button>
-            </div>
-        </ng-template>
-        <ul class="todo-list">
-            @for(todo of todos; track todo._id){
-                <li class="todo-item">
-                    <p-checkbox [ngModel]="todo.completed" (onChange)="toggleTodo(todo._id)" [binary]="true"></p-checkbox>
-                    <span [ngClass]="{'completed': todo.completed}">{{ todo.description }}</span>
-                    <button pButton type="button" icon="pi pi-pencil" severity="success" label="Editar" (click)="onOpenEditDialog(todo._id)" ></button>
-                    <button pButton type="button" icon="pi pi-trash" severity="danger" label="Excluir" (click)="deleteTodo(todo._id)" ></button>
-                </li>
-            }
-        </ul>
-    </p-card>
-}
+    <div class="todo-container">
+        <h1 class="title">Todo List</h1>
+        <p-card class="todo-card">
+            <ng-template pTemplate="header">
+                <div class="header-content">
+                    <button pButton type="button" label="Adicionar Tarefa" icon="pi pi-plus" (click)="onOpenAddDialog()" severity="success"></button>
+                </div>
+            </ng-template>
+            <ul class="todo-list">
+                @for(todo of todos; track todo._id){
+                    <li class="todo-item">
+                        <p-checkbox [ngModel]="todo.completed" (onChange)="toggleTodo(todo._id)" [binary]="true"></p-checkbox>
+                        <span [ngClass]="{'completed': todo.completed}">{{ todo.description }}</span>
+                        <button pButton type="button" icon="pi pi-pencil" severity="success" label="Editar" (click)="onOpenEditDialog(todo._id)" ></button>
+                        <button pButton type="button" icon="pi pi-trash" severity="danger" label="Excluir" (click)="deleteTodo(todo._id)" ></button>
+                    </li>
+                }
+            </ul>
+        </p-card>
+    </div>
+  }

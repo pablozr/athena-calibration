@@ -33,7 +33,7 @@ export class Admin implements OnInit {
     if (response && response.data){
 
       const filteredUsers = response.data.filter(user => user.roles.includes('USER_ROLE'));
-      
+
       this.users = filteredUsers;
       this.isLoading = false;
     }

@@ -10,10 +10,11 @@ import { User } from '../../../global/services/user/user';
 import { DialogModule } from 'primeng/dialog';
 import { FormsModule } from '@angular/forms';
 import { ICommentCreate, ICommentUpdate } from '../../interfaces/IComment';
+import { AvatarModule } from 'primeng/avatar';
 
 @Component({
   selector: 'app-blog',
-  imports: [CommonModule, CardModule, ButtonModule, Header, Loading, DialogModule, FormsModule],
+  imports: [CommonModule, CardModule, ButtonModule, Header, Loading, DialogModule, FormsModule, AvatarModule],
   standalone: true,
   templateUrl: './blog.html',
   styleUrl: './blog.scss'
@@ -46,7 +47,6 @@ export class Blog implements OnInit {
   }
 
   async onShowAllComments(post_id: number) {
-    this.isLoading = true;
 
     const response = await this.postService.getCommentsByPostId(post_id);
 
@@ -55,7 +55,6 @@ export class Blog implements OnInit {
         if(post.id === post_id){
           post.comments = response.data;
           post.commentsShown = !post.commentsShown;
-          this.isLoading = false;
         }
         return post;
       });

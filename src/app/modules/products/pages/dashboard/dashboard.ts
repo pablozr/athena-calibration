@@ -54,7 +54,6 @@ export class Dashboard implements OnInit {
       this.filterByPrice();
     });
     this.getProducts();
-    this.isLoading = false;
   }
 
   onSearchInputChange() {
@@ -169,7 +168,7 @@ export class Dashboard implements OnInit {
       this.products = response.data;
       this.isLoading = false;
     } else {
-      this.isLoading = false;
+      
       this.products = [];
     }
   }

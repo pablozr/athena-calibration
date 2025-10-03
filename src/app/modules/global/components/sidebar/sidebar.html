@@ -14,6 +14,12 @@
   <div class="overflow-y-auto">
     <ul class="list-none p-3 m-0">
       <li>
+            <a (click)="navigateTo('/home')" pRipple class="flex items-center cursor-pointer p-4 rounded-border text-surface-700 dark:text-surface-100 hover:bg-surface-100 dark:hover:bg-surface-700 duration-150 transition-colors p-ripple">
+              <i class="pi pi-home mr-2"></i>
+              <span class="font-medium">Home</span>
+            </a>
+          </li>
+      <li>
         <div
           pRipple
           pStyleClass="@next"
@@ -34,12 +40,6 @@
             </a>
           </li>
           <li>
-            <a (click)="navigateTo('/home')" pRipple class="flex items-center cursor-pointer p-4 rounded-border text-surface-700 dark:text-surface-100 hover:bg-surface-100 dark:hover:bg-surface-700 duration-150 transition-colors p-ripple">
-              <i class="pi pi-home mr-2"></i>
-              <span class="font-medium">Home</span>
-            </a>
-          </li>
-          <li>
             <a (click)="navigateTo('/blog')" pRipple class="flex items-center cursor-pointer p-4 rounded-border text-surface-700 dark:text-surface-100 hover:bg-surface-100 dark:hover:bg-surface-700 duration-150 transition-colors p-ripple">
               <i class="pi pi-book mr-2"></i>
               <span class="font-medium">Blog</span>
@@ -49,6 +49,12 @@
             <a (click)="navigateTo('/todos')" pRipple class="flex items-center cursor-pointer p-4 rounded-border text-surface-700 dark:text-surface-100 hover:bg-surface-100 dark:hover:bg-surface-700 duration-150 transition-colors p-ripple">
               <i class="pi pi-check-square mr-2"></i>
               <span class="font-medium">Todo List</span>
+            </a>
+          </li>
+          <li>
+            <a (click)="navigateTo('/admin')" pRipple class="flex items-center cursor-pointer p-4 rounded-border text-surface-700 dark:text-surface-100 hover:bg-surface-100 dark:hover:bg-surface-700 duration-150 transition-colors p-ripple">
+              <i class="pi pi-user mr-2"></i>
+              <span class="font-medium">Admin</span>
             </a>
           </li>
         </ul>
