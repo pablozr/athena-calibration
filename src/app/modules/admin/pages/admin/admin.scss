@@ -1,0 +1,203 @@
+.admin-container {
+  max-width: 1200px;
+  margin: auto;
+  margin-top: 3rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+}
+
+::ng-deep .p-datatable {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  
+  .p-datatable-header {
+    border-bottom: 2px solid #e9ecef;
+    padding: 1rem;
+    font-weight: 600;
+  }
+  
+  .p-datatable-thead > tr > th {
+    font-weight: 600;
+    padding: 1rem;
+    border-bottom: 2px solid #e9ecef;
+    text-align: left;
+    font-size: 0.95rem;
+    
+    &:first-child {
+      border-top-left-radius: 0;
+    }
+    
+  }
+  
+  .p-datatable-tbody > tr {
+    transition: all 0.2s ease;
+    
+    > td {
+      padding: 0.875rem 1rem;
+      border-bottom: 1px solid #e9ecef;
+      font-size: 0.9rem;
+      text-align: left;
+      
+      button {
+        transition: all 0.2s ease;
+        
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+    }
+  }
+
+  .p-datatable-tbody > tr:last-child > td {
+          border-bottom: none;
+    }
+  
+  .p-paginator {
+    
+    padding: 0.75rem 1rem;
+    
+    .p-paginator-pages .p-paginator-page {
+      min-width: 36px;
+      height: 36px;
+      margin: 0 0.25rem;
+      border-radius: 6px;
+    }
+    
+    .p-paginator-page.p-highlight {
+      border-color: #007bff;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-container {
+    padding: 0.75rem;
+  }
+  
+  ::ng-deep .p-datatable {
+    font-size: 0.85rem;
+    
+    .p-datatable-thead > tr > th {
+      padding: 0.75rem 0.5rem;
+      font-size: 0.85rem;
+    }
+    
+    .p-datatable-tbody > tr > td {
+      padding: 0.625rem 0.5rem;
+      font-size: 0.8rem;
+    }
+    
+    .p-paginator {
+      padding: 0.5rem;
+      
+      .p-paginator-pages .p-paginator-page {
+        min-width: 32px;
+        height: 32px;
+        font-size: 0.8rem;
+      }
+    }
+  }
+  
+  ::ng-deep .p-datatable-responsive-scroll {
+    .p-datatable-tbody > tr > td {
+      display: block;
+      text-align: right;
+      border-bottom: none;
+      border-top: 1px solid #e9ecef;
+      padding-left: 50%;
+      position: relative;
+      
+      &:before {
+        content: attr(data-label) ": ";
+        position: absolute;
+        left: 0.5rem;
+        width: 45%;
+        text-align: left;
+        font-weight: 600;
+      }
+      
+      &:first-child {
+        border-top: 2px solid #495057;
+      }
+      
+      &:last-child {
+        border-bottom: none;
+        margin-bottom: 1rem;
+      }
+    }
+    
+    .p-datatable-thead {
+      display: none;
+    }
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .admin-container {
+    padding: 1rem;
+  }
+  
+  ::ng-deep .p-datatable {
+    .p-datatable-thead > tr > th {
+      padding: 0.875rem 0.75rem;
+      font-size: 0.9rem;
+    }
+    
+    .p-datatable-tbody > tr > td {
+      padding: 0.75rem;
+      font-size: 0.85rem;
+    }
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .admin-container {
+    padding: 1.25rem;
+  }
+}
+
+@media (min-width: 1025px) {
+  ::ng-deep .p-datatable {
+    .p-datatable-thead > tr > th {
+      padding: 1.125rem 1.25rem;
+    }
+    
+    .p-datatable-tbody > tr > td {
+      padding: 1rem 1.25rem;
+    }
+  }
+}
+
+@media (min-width: 481px) and (max-width: 1024px) and (orientation: landscape) {
+  .admin-container {
+    padding: 0.875rem 1.25rem;
+  }
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  ::ng-deep .p-datatable {
+    .p-datatable-tbody > tr > td {
+      border-bottom-width: 0.5px;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::ng-deep .p-datatable .p-datatable-tbody > tr,
+  ::ng-deep .p-datatable .p-datatable-tbody > tr > td button {
+    transition: none;
+  }
+  
+  ::ng-deep .p-datatable .p-datatable-tbody > tr > td button:hover {
+    transform: none;
+  }
+}
+
+::ng-deep .p-datatable .p-datatable-tbody > tr > td button:focus {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}

@@ -36,5 +36,15 @@ export const routes: Routes = [
     path: 'todos',
     loadComponent: () => import('./modules/todo/pages/todo/todo').then((m) => m.Todo),
     canActivate:[Auth]
+  },
+  {
+    path: 'admin',
+    loadComponent: () => import('./modules/admin/pages/admin/admin').then((m) => m.Admin),
+    canActivate:[Auth]
+  },
+  {
+    path: '**',
+    loadComponent: () => import('./modules/global/pages/not-found/not-found').then((m) => m.NotFound),
+    canActivate:[Auth]
   }
 ];

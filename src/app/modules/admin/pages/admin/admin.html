@@ -1,0 +1,26 @@
+<app-header></app-header>
+
+@if(isLoading){
+  <app-loading></app-loading>
+} @else {
+  <div class="admin-container">
+    <p-table [value]="users" [paginator]="true" [rows]="10" [responsiveLayout]="'scroll'">
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="displayName">Nome</th>
+                <th pSortableColumn="email">Email</th>
+                <th pSortableColumn="roles">Função</th>
+                <th>Ações</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-user>
+            <tr>
+                <td>{{user.displayName}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.roles}}</td>
+                <td><button pButton type="button" label="Excluir" icon="pi pi-trash" severity="danger" (click)="deleteUser(user.id)"></button></td>
+            </tr>
+        </ng-template>
+    </p-table>
+  </div>
+}

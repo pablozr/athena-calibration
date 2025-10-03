@@ -1,0 +1,13 @@
+.not-found-container {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin-top: 50px;
+}
+
+.not-found-container h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Localstorage } from '../localstorage/localstorage';
 import { MessageService } from 'primeng/api';
@@ -59,5 +59,13 @@ export class User {
   signout(): void {
     this.localStorage.removeLocalStorage('USER-INFO');
     window.location.reload();
+  }
+
+  getTokenAuthorization() {
+    const token = this.user.value?.acessToken;
+    return new HttpHeaders({
+      'Content-type': 'application/json',
+      'Authorization': token ? `Bearer ${token}` : ''
+    })
   }
 }

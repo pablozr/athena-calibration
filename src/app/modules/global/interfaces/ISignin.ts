@@ -7,5 +7,5 @@ export interface ISigninResponse {
         bio: string;
         dataNascimento: string;
     }
-    token: string;
+    acessToken: string;
 }
