@@ -9,10 +9,12 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { Header } from '../../../global/components/header/header';
 import { Loading } from '../../../global/components/loading/loading';
 import { DialogModule } from 'primeng/dialog';
+import { InputTextModule } from 'primeng/inputtext';
+import { debounceTime, distinctUntilChanged, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-todo',
-  imports: [CommonModule, FormsModule, ButtonModule, CardModule, CheckboxModule, DialogModule, Header, Loading],
+  imports: [CommonModule, FormsModule, ButtonModule, CardModule, DialogModule, Header, Loading, InputTextModule],
   standalone: true,
   templateUrl: './todo.html',
   styleUrl: './todo.scss'
@@ -20,6 +22,7 @@ import { DialogModule } from 'primeng/dialog';
 export class Todo implements OnInit {
   private todoService = inject(TodoService);
 
+  private todoInput$ = new Subject<string>();
   todos: ITodo[] = [];
   isLoading: boolean = false;
   displayAddDialog: boolean = false;
@@ -36,6 +39,12 @@ export class Todo implements OnInit {
   };
 
   ngOnInit(): void {
+    this.todoInput$.pipe(
+      debounceTime(400),
+      distinctUntilChanged(),
+    ).subscribe(() => {
+      this.addTodo();
+    });
     this.getTodos();
   }
 
@@ -57,6 +66,11 @@ export class Todo implements OnInit {
       this.todos = response.data;
       this.isLoading = false;
     }
+  }
+
+
+  onTodoInput() {
+    this.todoInput$.next(this.newTodo.description);
   }
 
   async addTodo() {
@@ -102,7 +116,6 @@ export class Todo implements OnInit {
   }
 
   async toggleTodo(id: string) {
-    this.isLoading = true;
 
     const response = await this.todoService.toggleTodo(id);
 
@@ -113,7 +126,6 @@ export class Todo implements OnInit {
         }
         return todo;
       });
-      this.isLoading = false;
     }
   }
 
