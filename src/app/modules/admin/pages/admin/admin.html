@@ -15,9 +15,15 @@
         </ng-template>
         <ng-template pTemplate="body" let-user>
             <tr>
-                <td>{{user.displayName}}</td>
+                <td class="user-cell"> <p-avatar label="{{user.displayName.charAt(0).toUpperCase()}}" size="large"></p-avatar> {{user.displayName}}</td>
                 <td>{{user.email}}</td>
-                <td>{{user.roles}}</td>
+                <td>
+                  @if(user.roles?.includes('admin')) {
+                    <p-tag value="Admin" severity="danger"></p-tag>
+                  } @else {
+                    <p-tag value="Usuário" severity="success"></p-tag>
+                  }
+                </td>
                 <td><button pButton type="button" label="Excluir" icon="pi pi-trash" severity="danger" (click)="deleteUser(user.id)"></button></td>
             </tr>
         </ng-template>

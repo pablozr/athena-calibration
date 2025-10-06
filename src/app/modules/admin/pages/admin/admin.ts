@@ -7,10 +7,12 @@ import { IUsers } from '../../interfaces/IUser';
 import { AdminService } from '../../services/admin/admin';
 import { Header } from '../../../global/components/header/header';
 import { Loading } from '../../../global/components/loading/loading';
+import { AvatarModule } from 'primeng/avatar';
+import { TagModule } from 'primeng/tag';
 
 @Component({
   selector: 'app-admin',
-  imports: [CommonModule, ButtonModule, FormsModule, TableModule, Header, Loading],
+  imports: [CommonModule, ButtonModule, FormsModule, TableModule, Header, Loading, AvatarModule, TagModule],
   standalone: true,
   templateUrl: './admin.html',
   styleUrl: './admin.scss'

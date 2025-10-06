@@ -1,5 +1,5 @@
 .admin-container {
-  max-width: 1200px;
+  max-width: 1800px;
   margin: auto;
   margin-top: 3rem;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -7,6 +7,12 @@
   box-sizing: border-box;
   border: 1px solid #e9ecef;
   border-radius: 8px;
+}
+
+.user-cell{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 ::ng-deep .p-datatable {
@@ -25,7 +31,7 @@
     padding: 1rem;
     border-bottom: 2px solid #e9ecef;
     text-align: left;
-    font-size: 0.95rem;
+    font-size: 1.3rem;
     
     &:first-child {
       border-top-left-radius: 0;
@@ -39,7 +45,7 @@
     > td {
       padding: 0.875rem 1rem;
       border-bottom: 1px solid #e9ecef;
-      font-size: 0.9rem;
+      font-size: 1rem;
       text-align: left;
       
       button {
