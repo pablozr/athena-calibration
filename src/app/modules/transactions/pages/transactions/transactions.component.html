@@ -1,0 +1,109 @@
+<app-header></app-header>
+@if (isLoading){
+    <app-loading></app-loading>
+} @else {
+    <div class="transactions-container">
+
+        <p-dialog header="Editar Transação" [(visible)]="displayEditModal" [modal]="true" [closable]="true" [style]="{width: '600px'}">
+            <div class="p-fluid">
+                <div class="p-field">
+                    <label for="valor">Valor</label>
+                    <p-inputNumber id="valor" [(ngModel)]="updatedTransaction.amount" mode="currency" currency="BRL" placeholder="Valor" ></p-inputNumber>
+                </div>
+                <div class="p-field">
+                    <label for="descricao">Descrição</label>
+                    <input id="descricao" type="text" pInputText [(ngModel)]="updatedTransaction.description" placeholder="Descrição da transação">
+                </div>
+                <div class="p-field">
+                    <label for="category_id">Categoria</label>
+                    <p-select [options]="categories" [(ngModel)]="updatedTransaction.category_id" optionLabel="name" optionValue="id" placeholder="Selecione uma categoria" [showClear]="true"></p-select>
+                </div>
+                <div class="p-field">
+                    <label for="date">Data</label>
+                    <p-datepicker [(ngModel)]="updatedTransaction.date" view="month" dateFormat="mm/yy" placeholder="Selecione o mês e ano" [appendTo]="'body'"></p-datepicker>
+                </div>
+            </div>
+            <ng-template pTemplate="footer">
+                <p-button label="Cancelar" icon="pi pi-times" (click)="displayEditModal=false" class="p-button-text"></p-button>
+                <p-button label="Salvar" icon="pi pi-check" (click)="updateTransaction()" autoFocus></p-button>
+            </ng-template>
+        </p-dialog>
+
+        <p-dialog header="Adicionar Transação" [(visible)]="displayAddModal" [modal]="true" [closable]="true" [style]="{width: '600px'}">
+            <div class="p-fluid">
+                <div class="p-field">
+                    <label for="valor">Valor</label>
+                    <p-inputNumber id="valor" [(ngModel)]="newTransaction.amount" mode="currency" currency="BRL" placeholder="Valor" ></p-inputNumber>
+                </div>
+                <div class="p-field">
+                    <label for="descricao">Descrição</label>
+                    <input id="descricao" type="text" pInputText [(ngModel)]="newTransaction.description" placeholder="Descrição da transação">
+                </div>
+                <div class="p-field">
+                    <label for="category_id">Categoria</label>
+                    <p-select [options]="categories" [(ngModel)]="newTransaction.category_id" optionLabel="name" optionValue="id" placeholder="Selecione uma categoria" [showClear]="true"></p-select>
+                </div>
+                <div class="p-field">
+                    <label for="tipo">Tipo</label>
+                    <p-select [options]="transactionTypes" [(ngModel)]="newTransaction.type" optionLabel="label" optionValue="value" placeholder="Selecione o tipo"></p-select>
+                </div>
+                <div class="p-field">
+                    <label for="date">Data</label>
+                    <p-datepicker [(ngModel)]="newTransaction.date" view="month" dateFormat="mm/yy" placeholder="Selecione o mês e ano" [appendTo]="'body'"></p-datepicker>
+                </div>
+            </div>
+            <ng-template pTemplate="footer">
+                <p-button label="Cancelar" icon="pi pi-times" (click)="displayAddModal=false" class="p-button-text"></p-button>
+                <p-button label="Salvar" icon="pi pi-check" (click)="addTransaction()" autoFocus></p-button>
+            </ng-template>
+        </p-dialog>
+
+        <p-card header="Controle financeiro">
+                <div class="actions-wrapper">
+                    <div class="date-picker">
+                         <i class="pi pi-calendar calendar-icon"></i>
+                         <p-datepicker [(ngModel)]="mesAnoSelecionado" view="month" (onSelect)="loadTransactions()"dateFormat="mm/yy" placeholder="Selecione o mês e ano"></p-datepicker>
+                    </div>
+                    <div class="saldo" [ngClass] = "{'income-color': balance >=0 , 'expense-color': balance <= 0}">Saldo: {{ balance | currency:'BRL' }}</div>
+                    <div class="search">
+                        <label for="search">Search bar</label>
+                        <i class="pi pi-search search-icon"></i>
+                        <input id="descricao" type="text" pInputText [(ngModel)]="searchInput" (ngModelChange)="onSearchChange()" placeholder="Procure">
+                    </div>
+                </div>
+                <p-table [value]="transactions" class="p-mt-3" [paginator]="true" [rows]="5">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th pSortableColumn = "date">Data <p-sortIcon field = "date"></p-sortIcon></th>
+                            <th pSortableColumn = "description">Descrição <p-sortIcon field = "description"></p-sortIcon></th>
+                            <th pSortableColumn = "amount">Valor <p-sortIcon field = "amount"></p-sortIcon></th>
+                            <th pSortableColumn = "type">Tipo <p-sortIcon field = "type"></p-sortIcon></th>
+                            <th>Ações</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-transaction>
+                        <tr>
+                            <td>{{ transaction.date | date }}</td>
+                            <td>{{ transaction.description }}</td>
+                            <td [ngClass]="{'income-color': transaction.type === 'income', 'expense-color': transaction.type === 'expense'}">{{ transaction.amount | currency: 'BRL' }}</td>
+                            <td>
+                                @if(transaction.type === 'income') {
+                                    <p-tag value="Receita" severity="success"></p-tag>
+                                } @else {
+                                    <p-tag value="Despesa" severity="danger"></p-tag>
+                                }
+                            </td>
+                            <td>
+                                <button pButton icon="pi pi-pencil" (click)="openEditModal(transaction)" severity="success"></button>
+                                <button pButton  icon="pi pi-trash" (click)= "deleteTransaction(transaction)" severity="danger"></button>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+                <ng-template pTemplate="footer">
+                    <p-button label="Adicionar transação" icon="pi pi-plus" (click)="showAddModalDialog()"></p-button>
+                </ng-template>
+            
+        </p-card>
+    </div>
+}

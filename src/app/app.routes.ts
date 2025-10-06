@@ -43,6 +43,21 @@ export const routes: Routes = [
     canActivate:[Auth]
   },
   {
+    path: 'transactions',
+    loadComponent: () => import('./modules/transactions/pages/transactions/transactions.component').then((m) => m.TransactionComponent),
+    canActivate:[Auth]
+  },
+  {
+    path: 'imc',
+    loadComponent: () => import('./modules/imc/pages/imc-calculator/imc-calculator.component').then((m) => m.ImcCalculatorComponent),
+    canActivate:[Auth]
+  },
+  {
+    path: 'imc/history',
+    loadComponent: () => import('./modules/imc/pages/history/history.component').then((m) => m.HistoryComponent),
+    canActivate:[Auth]
+  },
+  {
     path: '**',
     loadComponent: () => import('./modules/global/pages/not-found/not-found').then((m) => m.NotFound),
     canActivate:[Auth]

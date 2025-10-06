@@ -1,12 +1,117 @@
 <app-header></app-header>
-<div class="card home-container">
-  <div class="home-content">
-    <header class="home-header">
-      <h1>Meu Portfólio de Projetos</h1>
-      <p class="subtitle">
-        Uma coleção de projetos para demonstrar minhas habilidades em desenvolvimento back-end,
-        todos integrados a este front-end em Angular.
-      </p>
-    </header>
-  </div>
+<h2 class="title">Meus Projetos</h2>
+<div class="projects-grid">
+  <p-card class="project">
+    <ng-template pTemplate="header">
+      <img src="assets/images/b9b5926e-fbc4-4c28-b5d9-6b6d150ef388.png" alt="products" class="project-image"/>
+    </ng-template>
+
+    <ng-template pTemplate="title">
+      <h2 class="project-title">Dashboard de Produtos</h2>
+    </ng-template>
+
+    <ng-template pTemplate="content">
+      <p>Projeto feito para gerenciar produtos, com o intuito de aprender a utilizar Angular e FastAPI, além de aprender a utilizar filtros</p>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+      <button pButton type="button" label="Acessar" icon="pi pi-external-link" (click)="navigateTo('/products')"></button>
+    </ng-template>
+
+  </p-card>
+
+  <p-card class="project">
+    <ng-template pTemplate="header">
+      <img src="assets/images/d1a199cc-0453-470c-adf3-fde27ae339d1.png" alt="products" class="project-image"/>
+    </ng-template>
+
+    <ng-template pTemplate="title">
+      <h2 class="project-title">Blog</h2>
+    </ng-template>
+
+    <ng-template pTemplate="content">
+      <p>Projeto feito para aprender mais sobre Angular e FastAPI, desenvolvendo o pensamento em modelagem de dados e APIs.</p>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+      <button pButton type="button" label="Acessar" icon="pi pi-external-link" (click)="navigateTo('/blog')"></button>
+    </ng-template>
+
+  </p-card>
+
+   <p-card class="project">
+    <ng-template pTemplate="header">
+      <img src="assets/images/dd5329e2-e01a-41e2-9295-ee270e20aba5.jpg" alt="products" class="project-image"/>
+    </ng-template>
+
+    <ng-template pTemplate="title">
+      <h2 class="project-title">Controle Financeiro</h2>
+    </ng-template>
+
+    <ng-template pTemplate="content">
+      <p>Projeto feito para aprender mais sobre Angular e FastAPI, especialmente como trabalhar com o primeng</p>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+      <button pButton type="button" label="Acessar" icon="pi pi-external-link" (click)="navigateTo('/transactions')"></button>
+    </ng-template>
+
+  </p-card>
+
+  <p-card class="project">
+    <ng-template pTemplate="header">
+      <img src="assets/images/05ce68f4-0291-46bd-92dc-c2e0df0f73da.jpg" alt="products" class="project-image"/>
+    </ng-template>
+
+    <ng-template pTemplate="title">
+      <h2 class="project-title">Calculadora IMC</h2>
+    </ng-template>
+
+    <ng-template pTemplate="content">
+      <p>Projeto feito para aprender Angular, estrutura de componentes e serviços.</p>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+      <button pButton type="button" label="Acessar" icon="pi pi-external-link" (click)="navigateTo('/imc')"></button>
+    </ng-template>
+
+  </p-card>
+
+  <p-card class="project">
+    <ng-template pTemplate="header">
+      <img src="assets/images/0e539877-d243-4f4c-8d37-13d21f48af7f.jpg" alt="products" class="project-image"/>
+    </ng-template>
+
+    <ng-template pTemplate="title">
+      <h2 class="project-title">Todo list</h2>
+    </ng-template>
+
+    <ng-template pTemplate="content">
+      <p>Projeto feito para aprender persistencia de dados reais em banco de dados com MongoDB e FastAPI</p>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+      <button pButton type="button" label="Acessar" icon="pi pi-external-link" (click)="navigateTo('/todos')"></button>
+    </ng-template>
+
+  </p-card>
+
+  <p-card class="project">
+    <ng-template pTemplate="header">
+      <img src="assets/images/f947812d-5bb7-4751-b938-9c749547e0cc.png" alt="products" class="project-image"/>
+    </ng-template>
+
+    <ng-template pTemplate="title">
+      <h2 class="project-title">Painel de admin</h2>
+    </ng-template>
+
+    <ng-template pTemplate="content">
+      <p>Projeto feito para aprender sobre permissões, guards de rotas e requisições autenticadas.</p>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+      <button pButton type="button" label="Acessar" icon="pi pi-external-link" (click)="navigateTo('/admin')"></button>
+    </ng-template>
+
+  </p-card>
 </div>
