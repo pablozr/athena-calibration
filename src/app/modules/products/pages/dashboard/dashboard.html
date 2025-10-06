@@ -102,8 +102,10 @@
             <ng-template pTemplate="body" let-product>
             <tr>
                 <td>{{ product.name }}</td>
-                <td>{{ product.category }}</td>
-                <td>{{ product.price | currency: 'BRL' }}</td>
+                <td>
+                    <p-tag [value]="product.category" severity="info"></p-tag>
+                </td>
+                <td [ngClass]="{ 'cash-color': product.price > 0 }">{{ product.price | currency: 'BRL' }}</td>
                 <td>
                 <button pButton type="button" label="Editar" icon="pi pi-pencil" (click)="showEditProductDialog(product)" severity="success" ></button>
                 <button pButton type="button" label="Excluir" icon="pi pi-trash" (click)="deleteProduct(product.id)" severity="danger"></button>

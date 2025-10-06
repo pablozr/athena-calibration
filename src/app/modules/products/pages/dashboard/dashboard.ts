@@ -16,10 +16,11 @@ import { SelectModule } from 'primeng/select';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 import { InputNumberModule } from 'primeng/inputnumber';
+import { TagModule } from 'primeng/tag';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [Header, Loading, CardModule, TableModule, ButtonModule, DialogModule, InputTextModule, FormsModule, CurrencyPipe, SliderModule, CommonModule, SelectModule, IconFieldModule, InputIconModule, DialogModule, InputNumberModule],
+  imports: [Header, Loading, CardModule, TableModule, ButtonModule, DialogModule, InputTextModule, FormsModule, CurrencyPipe, SliderModule, CommonModule, SelectModule, IconFieldModule, InputIconModule, DialogModule, InputNumberModule, TagModule],
   standalone: true,
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss'
