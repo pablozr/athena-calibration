@@ -14,6 +14,7 @@ export interface IPost{
     first_comment_author_name?: string;
     comments?: IComment[];
     commentsShown?: boolean;
+    total_comments?: number;
 }
 
 export interface IPostCreate{
