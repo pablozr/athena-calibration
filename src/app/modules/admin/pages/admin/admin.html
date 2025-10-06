@@ -4,7 +4,15 @@
   <app-loading></app-loading>
 } @else {
   <div class="admin-container">
-    <p-table [value]="users" [paginator]="true" [rows]="10" [responsiveLayout]="'scroll'">
+    <p-table [value]="users" [paginator]="true" [rows]="10" [responsiveLayout]="'scroll'" [rowHover]="true" [stripedRows]="true">
+      <ng-template pTemplate="caption">
+        <div class="table-caption-container">
+          <p-iconField iconPosition="right">
+            <input type="text" class="search" pInputText placeholder="Procure por nome" [(ngModel)]="searchInput" (ngModelChange)="onSearchInputChange()"/>
+            <p-inputicon class="pi pi-search" />
+          </p-iconField>
+        </div>
+      </ng-template>
         <ng-template pTemplate="header">
             <tr>
                 <th pSortableColumn="displayName">Nome <p-sortIcon field="displayName"></p-sortIcon></th>

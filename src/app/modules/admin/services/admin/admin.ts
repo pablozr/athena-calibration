@@ -16,6 +16,20 @@ export class AdminService {
 
   private apiUrl = 'http://localhost:8080/api/users';
 
+  searchUsers(query: string) : Promise<IApiResponseUsers | false> {
+    return new Promise((resolve, _) => {
+      this.http.get<IApiResponseUsers>(`${this.apiUrl}/search?username=${query}`, { headers: this.userService.getTokenAuthorization() }).subscribe({
+      next: (response) => {
+          resolve(response);
+        },
+        error: () => {
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Falha ao buscar usuários' });
+          resolve(false);
+        }
+      });
+    });
+  }
+  
   getUsers() : Promise<IApiResponseUsers | false> {
     return new Promise((resolve, _) => {
       this.http.get<IApiResponseUsers>(this.apiUrl, { headers: this.userService.getTokenAuthorization() }).subscribe({

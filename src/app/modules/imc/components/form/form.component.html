@@ -1,66 +1,113 @@
 <div class="form-container">
+  
   <div class="input-group">
     <div class="input-field">
       <label for="peso">Peso (kg)</label>
       <p-inputNumber id="peso" [(ngModel)]="peso" (keyup.enter)="calcularImc()" mode="decimal" [minFractionDigits]="0" [maxFractionDigits]="2"></p-inputNumber>
-      <label for="altura">Altura (cm)</label>
+    </div>
+    <div class="input-field">
+      <label for="altura">Altura (m)</label>
       <p-inputNumber id="altura" [(ngModel)]="altura" (keyup.enter)="calcularImc()" mode="decimal" [minFractionDigits]="0" [maxFractionDigits]="2"></p-inputNumber>
     </div>
-
-    @switch(imcClassificacao){
+  </div>
+  @switch(imcClassificacao){
       @case('Abaixo do peso'){
         <div class="result">
           <p-card class="result-card">
-            <p>Seu IMC é: <strong>{{ imc }}</strong></p>
-            <p>Classificação: <strong>Abaixo do peso</strong></p>
+            <p>Seu IMC é: <p-tag class="tag" severity="info">{{ imc }}</p-tag></p>
+            <p>Classificação: <p-tag class="tag" severity="info">Abaixo do peso</p-tag></p>
           </p-card>
         </div>
       }
       @case('Peso normal'){
         <div class="result">
           <p-card class="result-card">
-            <p>Seu IMC é: <strong>{{ imc}}</strong></p>
-            <p>Classificação: <strong>Peso normal</strong></p>
+            <p>Seu IMC é: <p-tag class="tag" severity="success">{{ imc }}</p-tag></p>
+            <p>Classificação: <p-tag class="tag" severity="success">Peso normal</p-tag></p>
           </p-card>
         </div>
       }
       @case('Sobrepeso'){
         <div class="result">
           <p-card class="result-card">
-            <p>Seu IMC é: <strong>{{ imc }}</strong></p>
-            <p>Classificação: <strong>Sobrepeso</strong></p>
+            <p>Seu IMC é: <p-tag class="tag" severity="danger">{{ imc }}</p-tag></p>
+            <p>Classificação: <p-tag class="tag" severity="danger">Sobrepeso</p-tag></p>
           </p-card>
         </div>
       }
       @case('Obesidade grau 1'){
         <div class="result">
           <p-card class="result-card">
-            <p>Seu IMC é: <strong>{{ imc }}</strong></p>
-            <p>Classificação: <strong>Obesidade grau 1</strong></p>
+            <p>Seu IMC é: <p-tag class="tag" severity="danger">{{ imc }}</p-tag></p>
+            <p>Classificação: <p-tag class="tag" severity="danger">Obesidade grau 1</p-tag></p>
           </p-card>
         </div>
       }
       @case('Obesidade grau 2'){
         <div class="result">
           <p-card class="result-card">
-            <p>Seu IMC é: <strong>{{ imc }}</strong></p>
-            <p>Classificação: <strong>Obesidade grau 2</strong></p>
+            <p>Seu IMC é: <p-tag class="tag" severity="danger">{{ imc }}</p-tag></p>
+            <p>Classificação: <p-tag class="tag" severity="danger">Obesidade grau 2</p-tag></p>
           </p-card>
         </div>
       }
       @case('Obesidade grau 3'){
         <div class="result">
           <p-card class="result-card">
-            <p>Seu IMC é: <strong>{{ imc }}</strong></p>
-            <p>Classificação: <strong>Obesidade grau 3</strong></p>
+            <p>Seu IMC é: <p-tag class="tag" severity="danger">{{ imc }}</p-tag></p>
+            <p>Classificação: <p-tag class="tag" severity="danger">Obesidade grau 3</p-tag></p>
           </p-card>
         </div>
       }
     }
+  <div class="information-grid">
+    <p-card class="info-card">
+      <ng-template pTemplate="header">
+        <h3>O que é IMC?</h3>
+      </ng-template>
+      <p>O Índice de Massa Corporal (IMC) é uma medida utilizada para avaliar se uma pessoa está com o peso adequado em relação à sua altura. Ele é calculado dividindo o peso (em quilogramas) pela altura (em metros) ao quadrado.</p>
 
+      <ng-template pTemplate="footer">
+        <a href="https://www.who.int/news-room/fact-sheets/detail/obesity-and-overweight" target="_blank" rel="noopener noreferrer">Fonte: Organização Mundial da Saúde (OMS)</a>
+      </ng-template>
+    </p-card>
+
+    <p-card class="info-card">
+      <ng-template pTemplate="header">
+        <h3>Classificação do IMC</h3>
+      </ng-template>
+      <ul>
+        <li>Abaixo de 18,5: Abaixo do peso</li>
+        <li>Entre 18,5 e 24,9: Peso normal</li>
+        <li>Entre 25 e 29,9: Sobrepeso</li>
+        <li>Entre 30 e 34,9: Obesidade grau 1</li>
+        <li>Entre 35 e 39,9: Obesidade grau 2</li>
+        <li>Acima de 40: Obesidade grau 3</li>
+      </ul>
+
+      <ng-template pTemplate="footer">
+        <a href="https://www.who.int/news-room/fact-sheets/detail/obesity-and-overweight" target="_blank" rel="noopener noreferrer">Fonte: Organização Mundial da Saúde (OMS)</a>
+      </ng-template>
+    </p-card>
+
+    <p-card class="info-card">
+      <ng-template pTemplate="header">
+        <h3>Está abaixo do peso?</h3>
+      </ng-template>
+      <p>Estar abaixo do peso pode estar associado a diversos fatores, como má alimentação, problemas de saúde ou metabolismo acelerado. É importante buscar orientação médica para identificar a causa e adotar hábitos saudáveis.</p>
+
+    </p-card>
+
+    <p-card class="info-card">
+      <ng-template pTemplate="header">
+        <h3>Está com sobrepeso ou obesidade?</h3>
+      </ng-template>
+      <p>Estar com sobrepeso ou obesidade pode aumentar o risco de desenvolver diversas doenças, como diabetes tipo 2, hipertensão e problemas cardiovasculares. Adotar uma alimentação equilibrada e praticar atividades físicas regularmente são medidas importantes para controlar o peso.</p>
+    </p-card>
   </div>
   <div class="button-group">
-    <p-button label="Calcular IMC" icon="pi pi-chart-bar" (onClick)="calcularImc()"></p-button>
+    <p-button label="Calcular IMC" icon="pi pi-calculator" (onClick)="calcularImc()"></p-button>
     <p-button label="Ver Histórico Completo" icon="pi pi-table" (onClick)="navigateTo('/imc/history')"  styleClass="p-mt-4"></p-button>
   </div>
+    
 </div>

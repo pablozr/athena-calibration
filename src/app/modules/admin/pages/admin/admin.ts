@@ -9,10 +9,13 @@ import { Header } from '../../../global/components/header/header';
 import { Loading } from '../../../global/components/loading/loading';
 import { AvatarModule } from 'primeng/avatar';
 import { TagModule } from 'primeng/tag';
+import { IconFieldModule } from 'primeng/iconfield';
+import { InputIconModule } from 'primeng/inputicon';
+import { debounceTime, distinctUntilChanged, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-admin',
-  imports: [CommonModule, ButtonModule, FormsModule, TableModule, Header, Loading, AvatarModule, TagModule],
+  imports: [CommonModule, ButtonModule, FormsModule, TableModule, Header, Loading, AvatarModule, TagModule, IconFieldModule, InputIconModule],
   standalone: true,
   templateUrl: './admin.html',
   styleUrl: './admin.scss'
@@ -20,11 +23,35 @@ import { TagModule } from 'primeng/tag';
 export class Admin implements OnInit {
   private adminService = inject(AdminService);
 
+  searchInput$: Subject<string> = new Subject<string>();
   users : IUsers[] = [];
   isLoading: boolean = false;
+  searchInput: string = '';
 
   ngOnInit(): void {
+    this.searchInput$.pipe(
+      debounceTime(500),
+      distinctUntilChanged(),
+      ).subscribe(() => {
+        this.searchByUsername();
+      });
     this.getUsers();
+  }
+
+  onSearchInputChange(): void{
+    this.searchInput$.next(this.searchInput);
+  }
+
+  async searchByUsername() {
+    this.isLoading = true;
+
+    const response = await this.adminService.searchUsers(this.searchInput);
+
+    if (response && response.data) {
+      const filteredUsers = response.data.filter(user => user.roles.includes('USER_ROLE'));
+      this.users = filteredUsers;
+      this.isLoading = false;
+    }
   }
 
   async getUsers(){

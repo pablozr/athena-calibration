@@ -7,11 +7,12 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { ToastModule } from 'primeng/toast';
 import { ImcService } from '../../services/imc/imc-service.service';
 import { CardModule } from 'primeng/card';
+import { TagModule } from 'primeng/tag';
 
 @Component({
   selector: 'app-form',
   standalone: true,
-  imports: [ButtonModule, InputNumberModule, ToastModule, FormsModule, RouterModule, CardModule],
+  imports: [ButtonModule, InputNumberModule, ToastModule, FormsModule, RouterModule, CardModule, TagModule],
   templateUrl: './form.component.html',
   styleUrl: './form.component.scss'
 })
