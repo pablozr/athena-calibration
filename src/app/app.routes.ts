@@ -30,7 +30,7 @@ export const routes: Routes = [
   {
     path: 'blog',
     loadComponent: () => import('./modules/blog/pages/blog/blog').then((m) => m.Blog),
-    canActivate:[Auth]
+    
   },
   {
     path: 'todos',

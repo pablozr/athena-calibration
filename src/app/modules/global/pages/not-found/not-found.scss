@@ -1,13 +1,64 @@
-.not-found-container {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+.container {
   display: flex;
-  align-items: center;
   justify-content: center;
-  height: 100vh;
-  margin-top: 50px;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem;
 }
 
-.not-found-container h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+.not-found-content {
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+}
+
+.error-code {
+  font-size: 6rem;
+  font-weight: bold;
+  margin: 0;
+  color: var(--text-color);
+  opacity: 0.8;
+}
+
+.error-title {
+  font-size: 2rem;
+  margin: 1rem 0;
+  color: var(--text-color);
+}
+
+.error-description {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: var(--text-color-secondary);
+  line-height: 1.5;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+  
+  .error-code {
+    font-size: 4rem;
+  }
+  
+  .error-title {
+    font-size: 1.5rem;
+  }
+  
+  .error-description {
+    font-size: 1rem;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
 }

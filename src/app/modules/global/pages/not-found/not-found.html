@@ -1,3 +1,14 @@
-<div class="not-found-container">
-  <h1>404 - Página Não Encontrada</h1>
+<app-header></app-header>
+<div class="container">
+  <div class="not-found-content">
+    <h1 class="error-code">404</h1>
+    <h2 class="error-title">Página não encontrada</h2>
+    <p class="error-description">
+      A página que você está procurando não existe ou foi movida.
+    </p>
+    <div class="action-buttons">
+      <button pButton type="button" label="Voltar ao Início" icon="pi pi-home" (click)="goHome()"></button>
+      <button pButton type="button" label="Página Anterior" icon="pi pi-arrow-left" (click)="goBack()" severity="secondary"></button>
+    </div>
+  </div>
 </div>
