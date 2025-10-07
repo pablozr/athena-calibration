@@ -75,6 +75,10 @@
             </aside>
             <div class="blog-container">
                 <h1 class="blog-title">Blog bananilson</h1>
+                <div class="stat-item">
+                    <span class="stat-number">{{ posts.length }}</span>
+                    <span class="stat-label">Posts</span>
+                  </div>
                 <p-button icon="pi pi-plus" class="add-post-button" severity="success" (click)="onOpenAddPostDialog()"></p-button>
                 <div class="blog-posts">
                 @for (post of posts; track post.id){
@@ -83,7 +87,7 @@
                             <ng-template pTemplate="title">
                                 <div class="post-author">
                                     <span class="author-name"> <p-avatar shape="circle" label="{{post.post_author_name ? post.post_author_name.charAt(0).toUpperCase() : ''}}"></p-avatar> {{post.post_author_name}}</span>
-                                    <span class="author-name">{{post.created_at | date}}</span>
+                                    <span class="author-date">{{post.created_at | date}}</span>
                                 </div>
                                 @if (post.author_id === userDetails.user.id) {
                                     <div class="post-actions">

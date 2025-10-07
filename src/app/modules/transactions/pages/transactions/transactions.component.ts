@@ -35,7 +35,7 @@ export class TransactionComponent {
   transactions: ITransactions[] = [];
   categories: any[] = [];
   balance: number = 0;
-  isLoading = true;
+  isLoading = false;
   searchSubject = new Subject<string>();
   searchSubscription: Subscription = new Subscription();
   transactionTypes = [
