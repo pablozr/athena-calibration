@@ -7,10 +7,12 @@ import { User } from '../../services/user/user';
 import { MessageService } from 'primeng/api';
 import { Loading } from '../../components/loading/loading';
 import { ButtonTheme } from '../../components/button-theme/button-theme';
+import { IconFieldModule } from 'primeng/iconfield';
+import { InputIconModule } from 'primeng/inputicon';
 
 @Component({
   selector: 'app-register',
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, ButtonModule, Loading, ButtonTheme],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, ButtonModule, Loading, ButtonTheme, IconFieldModule, InputIconModule],
   standalone: true,
   templateUrl: './register.html',
   styleUrl: './register.scss'
