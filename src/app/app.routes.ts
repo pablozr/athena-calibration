@@ -50,7 +50,7 @@ export const routes: Routes = [
   {
     path: 'imc',
     loadComponent: () => import('./modules/imc/pages/imc-calculator/imc-calculator.component').then((m) => m.ImcCalculatorComponent),
-    canActivate:[Auth]
+    
   },
   {
     path: 'imc/history',

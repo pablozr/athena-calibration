@@ -10,56 +10,28 @@
       <p-inputNumber id="altura" [(ngModel)]="altura" (keyup.enter)="calcularImc()" mode="decimal" [minFractionDigits]="0" [maxFractionDigits]="2"></p-inputNumber>
     </div>
   </div>
-  @switch(imcClassificacao){
-      @case('Abaixo do peso'){
-        <div class="result">
-          <p-card class="result-card">
-            <p>Seu IMC é: <p-tag class="tag" severity="info">{{ imc }}</p-tag></p>
-            <p>Classificação: <p-tag class="tag" severity="info">Abaixo do peso</p-tag></p>
-          </p-card>
+  @if(imc !== null) {
+    <div class="imc-gauge">
+      <div class="gauge-container">
+        <div class="gauge-labels">
+          <span class="gauge-label abaixo">Abaixo</span>
+          <span class="gauge-label normal">Normal</span>
+          <span class="gauge-label sobrepeso">Sobrepeso</span>
+          <span class="gauge-label obesidade">Obesidade</span>
         </div>
-      }
-      @case('Peso normal'){
-        <div class="result">
-          <p-card class="result-card">
-            <p>Seu IMC é: <p-tag class="tag" severity="success">{{ imc }}</p-tag></p>
-            <p>Classificação: <p-tag class="tag" severity="success">Peso normal</p-tag></p>
-          </p-card>
+        <div class="gauge-bar">
+          <div class="gauge-segment abaixo"></div>
+          <div class="gauge-segment normal"></div>
+          <div class="gauge-segment sobrepeso"></div>
+          <div class="gauge-segment obesidade"></div>
+          <div class="gauge-pointer" [style.left.%]="getImcPosition()">
+            <div class="pointer-value">{{ imc }}</div>
+            <div class="pointer-arrow"></div>
+          </div>
         </div>
-      }
-      @case('Sobrepeso'){
-        <div class="result">
-          <p-card class="result-card">
-            <p>Seu IMC é: <p-tag class="tag" severity="danger">{{ imc }}</p-tag></p>
-            <p>Classificação: <p-tag class="tag" severity="danger">Sobrepeso</p-tag></p>
-          </p-card>
-        </div>
-      }
-      @case('Obesidade grau 1'){
-        <div class="result">
-          <p-card class="result-card">
-            <p>Seu IMC é: <p-tag class="tag" severity="danger">{{ imc }}</p-tag></p>
-            <p>Classificação: <p-tag class="tag" severity="danger">Obesidade grau 1</p-tag></p>
-          </p-card>
-        </div>
-      }
-      @case('Obesidade grau 2'){
-        <div class="result">
-          <p-card class="result-card">
-            <p>Seu IMC é: <p-tag class="tag" severity="danger">{{ imc }}</p-tag></p>
-            <p>Classificação: <p-tag class="tag" severity="danger">Obesidade grau 2</p-tag></p>
-          </p-card>
-        </div>
-      }
-      @case('Obesidade grau 3'){
-        <div class="result">
-          <p-card class="result-card">
-            <p>Seu IMC é: <p-tag class="tag" severity="danger">{{ imc }}</p-tag></p>
-            <p>Classificação: <p-tag class="tag" severity="danger">Obesidade grau 3</p-tag></p>
-          </p-card>
-        </div>
-      }
-    }
+      </div>
+    </div>
+  }
   <div class="information-grid">
     <p-card class="info-card">
       <ng-template pTemplate="header">
