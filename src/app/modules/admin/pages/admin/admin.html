@@ -4,15 +4,23 @@
   <app-loading></app-loading>
 } @else {
   <div class="admin-container">
-    <p-table [value]="users" [paginator]="true" [rows]="10" [responsiveLayout]="'scroll'" [rowHover]="true" [stripedRows]="true">
-      <ng-template pTemplate="caption">
-        <div class="table-caption-container">
-          <p-iconField iconPosition="right">
-            <input type="text" class="search" pInputText placeholder="Procure por nome" [(ngModel)]="searchInput" (ngModelChange)="onSearchInputChange()"/>
-            <p-inputicon class="pi pi-search" />
-          </p-iconField>
+    <div class="admin-header">
+      <h1>Baggagio | Usuários</h1>
+    </div>
+    <div class="table-caption-container">
+      <div class="user-count-badge">
+        <i class="pi pi-users"></i>
+        <div class="count-content">
+          <span class="count-value">{{ users.length }}</span>
+          <span class="count-label"> Usuários</span>
         </div>
-      </ng-template>
+      </div>
+      <p-iconField iconPosition="right">
+        <input type="text" class="search" pInputText placeholder="Procure por nome" [(ngModel)]="searchInput" (ngModelChange)="onSearchInputChange()"/>
+        <p-inputicon class="pi pi-search" />
+      </p-iconField>
+    </div>
+    <p-table [value]="users" [paginator]="true" [rows]="10" [responsiveLayout]="'scroll'" [rowHover]="true" [stripedRows]="true">
         <ng-template pTemplate="header">
             <tr>
                 <th pSortableColumn="displayName">Nome <p-sortIcon field="displayName"></p-sortIcon></th>
