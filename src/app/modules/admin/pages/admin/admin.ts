@@ -29,26 +29,13 @@ export class Admin implements OnInit {
   searchInput: string = '';
 
   ngOnInit(): void {
-    this.users = [
-      {
-        id: 1,
-        roles: 'admin',
-        displayName: 'Admin',
-        email: 'admin@admin.com',
-      },
-      {
-        id: 2,
-        roles: 'admin',
-        displayName: 'User',
-        email: 'user@user.com',
-      },
-      {
-        id: 3,
-        roles: 'user',
-        displayName: 'Admin',
-        email: 'admin@admin.com',
-      }
-    ]
+    this.searchInput$.pipe(
+      debounceTime(500),
+      distinctUntilChanged(),
+      ).subscribe(() => {
+        this.searchByUsername();
+      });
+    this.getUsers();
   }
 
   onSearchInputChange(): void{

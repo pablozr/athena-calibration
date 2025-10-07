@@ -40,7 +40,7 @@ export const routes: Routes = [
   {
     path: 'admin',
     loadComponent: () => import('./modules/admin/pages/admin/admin').then((m) => m.Admin),
-    
+    canActivate:[Auth]
   },
   {
     path: 'transactions',
